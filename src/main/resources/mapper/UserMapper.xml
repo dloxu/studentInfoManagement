@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ceit.dao.UserMapper" >
+    <select id="judge_Password" parameterType="java.lang.String"  resultType="java.lang.String">
+        SELECT password FROM  t_login  WHERE  account=#{account}
+    </select>
+    <select id="selectUserCount" resultType="int" parameterType="java.lang.String">
+        SELECT count(*) FROM  t_login WHERE  account=#{account}
+    </select>
+    <select id="selectRole_nameByAcc" parameterType="java.lang.String" resultType="java.util.HashMap">
+        SELECT r.role_name,u.name,u.role FROM  t_user  u,t_login l,t_role r WHERE l.account=#{account} and l.account=u.account and  r.id=u.role
+    </select>
+
+</mapper>

@@ -1,0 +1,15 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false" monitoring="autodetect" dynamicConfig="true" maxBytesLocalHeap="512M">
+
+    <sizeOfPolicy maxDepth="50" maxDepthExceededBehavior="abort"/>
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="3600"
+                  memoryStoreEvictionPolicy="LRU" statistics="true" overflowToDisk="true"/>
+
+    <cache name="shiro_cache" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LRU" statistics="true" overflowToDisk="true"/>
+
+</ehcache>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <description>Spring公共配置</description>
+    <!-- 引入properties配置文件 -->
+    <!-- <util:properties/> 标签只能加载一个文件，当多个属性文件需要被加载的时候，可以使用多个该标签 -->
+    <!-- <util:properties/> 标签的实现类是PropertiesFactoryBean -->
+    <bean id="configurer" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+
+            </list>
+        </property>
+        <property name="fileEncoding" value="utf-8"></property>
+    </bean>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:conf/application.properties"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--<import resource="spring-ehcache.xml"></import>-->
+    <import resource="spring-mybatis.xml"></import>
+</beans>
+
+

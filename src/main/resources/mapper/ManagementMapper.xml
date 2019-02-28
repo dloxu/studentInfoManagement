@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ceit.dao.ManagementMapper">
+
+    <select id="selectAllStudentByPage" resultType="com.ceit.model.Student">
+        SELECT s.stuId,s.stuNo,s.stuName,s.sex,s.birthday,s.gradeId,g.gradeName,s.email,s.stuDesc
+        FROM  t_student s,t_grade g WHERE s.gradeId=g.id LIMIT #{firstPage} , #{rows}
+    </select>
+    <select id="allStudentCount" resultType="int">
+        SELECT  count(*) FROM t_student s,t_grade g WHERE s.gradeId=g.id
+    </select>
+    <select id="selectAllGradeByPage" resultType="com.ceit.model.Grade">
+        SELECT * FROM t_grade LIMIT #{firstPage} , #{rows}
+    </select>
+    <select id="allGradeCount" resultType="int">
+        select count(*) FROM t_grade
+    </select>
+    <select id="selectGradeIdAndName" resultType="java.util.HashMap">
+        SELECT id,gradeName FROM t_grade
+    </select>
+    <insert id="addStudent" parameterType="com.ceit.model.Student">
+        INSERT  INTO t_student (stuNo,stuName,sex,birthday,gradeId,email,stuDesc)VALUES (#{stuNo},#{stuName},#{sex},#{birthday},#{gradeId},#{email},#{stuDesc})
+    </insert>
+    <update id="updateStudent">
+        UPDATE t_student
+        <set>
+            stuName=#{student.stuName},stuNo=#{student.stuNo},sex=#{student.sex},birthday=#{student.birthday},gradeId=#{student.gradeId},email=#{student.email},stuDesc=#{student.stuDesc}
+        </set>
+        where stuId=#{stuId}
+    </update>
+    <select id="selectMaxStuId" resultType="int">
+        SELECT MAX(stuId) from t_student
+    </select>
+    <select id="selectMaxGradeId" resultType="int">
+        select MAX(id) from t_grade
+    </select>
+    <insert id="addGrade" parameterType="com.ceit.model.Grade">
+        INSERT into t_grade(gradeName,gradeDesc) VALUES (#{gradeName},#{gradeDesc})
+    </insert>
+    <update id="updateGrade">
+        UPDATE  t_grade
+        <set>
+            gradeName=#{gradeName},gradeDesc=#{gradeDesc}
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteStudent">
+        delete from t_student where stuId in
+        <foreach item="deleteId" collection="idList" index="index" open="(" separator="," close=")">
+            #{deleteId}
+        </foreach>
+    </delete>
+    <delete id="deleteGrade">
+        delete from t_grade where id in
+        <foreach item="deleteId" collection="idList" index="index" open="(" separator="," close=")">
+            #{deleteId}
+        </foreach>
+    </delete>
+    <select id="selectStudentBySexAndGrade" resultType="com.ceit.model.Student">
+        SELECT s.stuId,s.stuNo,s.stuName,s.sex,s.birthday,s.gradeId,g.gradeName,s.email,s.stuDesc
+        FROM  t_student s,t_grade g
+        WHERE s.sex=#{sex} and s.gradeId=#{gradeId} and g.id=s.gradeId
+    </select>
+</mapper>
