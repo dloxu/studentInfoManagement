@@ -8,9 +8,9 @@
 
 学生信息：
 
-![Image text](https://raw.github.com/xujinfeng0309/studentInfoManagemen/src/main/webapp/static/imageofpro/stu.ppg)
+![Image text](https://raw.github.com/xujinfeng0309/studentInfoManagement/src/main/webapp/static/imageofpro/stu.ppg)
 
 班级信息：
 
-![Image text](https://raw.github.com/xujinfeng0309/studentInfoManagemen/src/main/webapp/static/imageofpro/grade.ppg)
+![Image text](https://raw.github.com/xujinfeng0309/studentInfoManagement/src/main/webapp/static/imageofpro/grade.ppg)
 
