@@ -19,7 +19,7 @@
     <!-- spring版本号 -->
     <spring.version>4.0.6.RELEASE</spring.version><!--版本太老，更新一下-->
     <!-- mybatis版本号 -->
-    <mybatis.version>3.2.7</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
     <!-- slf4j版本号 -->
     <slf4j.version>1.7.7</slf4j.version>
     <logback.version>1.1.2</logback.version>
