@@ -17,7 +17,7 @@
 
   <properties>
     <!-- spring版本号 -->
-    <spring.version>4.0.6.RELEASE</spring.version><!--版本太老，更新一下-->
+    <spring.version>5.3.18</spring.version><!--版本太老，更新一下-->
     <!-- mybatis版本号 -->
     <mybatis.version>3.2.7</mybatis.version>
     <!-- slf4j版本号 -->
